@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src='./scripts/image.js'></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ziteboard clone</title>
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+    <div id="tweakTools">
+        <span id="pen" class="tool active" onclick="handleModeChange('pen')">
+            <div id="penOptions">
+                <div class="popuptext" id="myPopup" style="position:absolute; z-index:30; height: 60px; width: 150px;">
+                    <div class="controlleritem"
+                        style="position: absolute; left: 0px; top: 0px; width: 150px; height: 36px; line-height: 36px; text-align: center; background-color: rgb(204, 204, 204);">
+                        <div style="position: absolute; left: 0px; top: 0px;padding-top: 18px; width: 44px; height: 36px; box-sizing: border-box; cursor: pointer; color: rgb(132, 132, 132);"
+                            onclick="changePenSize(2)">
+                            <span class="penSpan2 active"
+                                style="position: absolute; box-sizing: border-box; left: 9px; border-radius: 4px; background-color: rgb(0, 0, 0); width: 26px; height: 2px;"></span>
+                        </div>
+                        <div style="position: absolute; left: 44px; top: 0px;padding-top: 15px; width: 44px; height: 36px; box-sizing: border-box; cursor: pointer; color: rgb(133, 93, 93);"
+                            onclick="changePenSize(10)">
+                            <span class="penSpan10"
+                                style="position: absolute; box-sizing: border-box; left: 8px; border-radius: 4px; background-color: rgb(132, 132, 132); width: 28px; height: 6px;"></span>
+                        </div>
+                        <div style="position: absolute; left: 88px; top: 0px;padding-top: 12px; width: 44px; height: 36px; box-sizing: border-box; cursor: pointer; color: rgb(132, 132, 132);"
+                            onclick="changePenSize(20)">
+                            <span class="penSpan20"
+                                style="position: absolute;box-sizing: border-box;left: 8px;border-radius: 4px;background-color: rgb(132, 132, 132);width: 28px;height: 12px;"></span>
+                        </div>
+                    </div>
+                    <div class="colorController"
+                        style="position: absolute; left: 0px; top: 40px; width: 150px; height: 10px; line-height: 36px; text-align: center; background-color: rgb(204, 204, 204);">
+                        <div class='blackColor' onclick="changePenColor('black')"
+                            style="position: absolute; left: 0px; top: 0px;padding-top: 18px; width: 50px; height: 10px; box-sizing: border-box; cursor: pointer; color: rgb(132, 132, 132);">
+                            <span style="height: 50px; width: 50px;"></span>
+                        </div>
+                        <div class='blueColor' onclick="changePenColor('blue')"
+                            style="position: absolute; left: 50px; top: 0px;padding-top: 18px; width: 50px; height: 10px; box-sizing: border-box; cursor: pointer; color: rgb(132, 132, 132);">
+                            <span style="height: 50px; width: 50px;"></span>
+                        </div>
+                        <div class='redColor' onclick="changePenColor('red')"
+                            style="position: absolute; left: 100px; top: 0px;padding-top: 18px; width: 50px; height: 10px; box-sizing: border-box; cursor: pointer; color: rgb(132, 132, 132);">
+                            <span style="height: 50px; width: 50px;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <img class="icon" src="./icons/pencil_icon_light.png" />
+        </span>
+        <span id="eraser" class="tool" onclick="handleModeChange('eraser')">
+            <img class="icon" src="./icons/eraser_icon_dark.png">
+        </span>
+        <span id="image" class="tool" onclick="handleModeChange('image')">
+            <img class="icon" src="./icons/image_icon_dark.png" />
+            <div id="imageOptions">
+                <div class="popuptext" id="myPopup" style="position:absolute; z-index:30; height: 60px; width: 150px;">
+                    <input class="imageInput" type="file" name="pic" accept="image/*" onchange="uploadImage()">
+                    <!-- <input type="submit" onclick="uploadImage()"/> -->
+                </div>
+            </div>
+        </span>
+        <span id="sticky" class="tool" onclick="handleModeChange('sticky')">
+            <img class="icon" src="./icons/sticky_icon_dark.png" />
+            <div id="stickyOptions" hidden=true></div>
+        </span>
+        <span id="download" class="tool" onclick="downloadCanvas()">
+            <a href="#" id='downloadButton'>
+                <img class="icon" src="./icons/download_icon_dark.png" />
+            </a>
+        </span>
+        <span id="undo" class="tool">
+            <img class="icon" id='undoButton' src="./icons/undo_icon_dark.png" />
+        </span>
+        <span id="redo" class="tool">
+            <img class="icon" id='redoButton' src="./icons/redo_icon_dark.png" />
+        </span>
+        <span id="zoom" class="tool" onclick="handleZoom()">
+            <img class="icon" id='zoomButton' src="./icons/zoom_icon_dark.png" />
+            <div id="zoomOptions">
+                <div class="popuptext"
+                    style="position:absolute; z-index:30;padding-top: 10px; height: 45px; width: 150px;">
+                    <input id='zoomRangeElement' type="range" min="1" max='4' value="1" step="1"
+                        onchange="handleZoomChange()" />
+                    <span id='zoomLevel'>1x</span>
+                </div>
+            </div>
+        </span>
+        <span id="span" class="tool" onclick="handleModeChange('span')">
+            <img class="icon" src="./icons/move_icon_dark.png" />
+        </span>
+    </div>
+    <canvas id="board"></canvas>
+    <script type="text/javascript" src='./scripts/tools.js'></script>
+    <script type="text/javascript" src="./scripts/script.js"></script>
+</body>
+
+</html>

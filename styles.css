@@ -1,0 +1,173 @@
+html, body {
+    height: 100%;
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+canvas {
+    position: absolute;
+    border-top: 1px solid black;
+    top:57px;
+    /* height: 100%; */
+    /* width: 100%; */
+    /* box-sizing: border-box; */
+}
+
+.icon {
+    width: 48px;
+}
+
+#tweakTools {
+    z-index: 1;
+    padding-top: 5px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#pen[class~='active']{
+    background-color: black
+}
+
+#pen {
+    background-color: black
+}
+
+.tool[class~=active] {
+    background-color: grey
+}
+
+#penOptions {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+#penOptions .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    margin-top: 10px;
+    margin-left: -50px;
+}
+
+#penOptions[class~=show] .popuptext {
+    visibility: visible;
+}
+
+#penOptions .popuptext::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #555 transparent;
+}
+
+#zoomOptions .popuptext{
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    margin-top: 10px;
+    margin-left: -50px;
+}
+
+#zoomOptions[class~=show] .popuptext {
+    visibility: visible;
+}
+
+#zoomOptions .popuptext::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #555 transparent;
+  }
+  
+
+#imageOptions .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    margin-top: 10px;
+    margin-left: -50px;
+}
+
+#imageOptions[class~=show] .popuptext {
+    visibility: visible;
+}
+
+#imageOptions .popuptext::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #555 transparent;
+}
+
+#popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+div.controlleritem span[class~=active]{
+    background-color: rgb(0,0,0) !important
+}
+
+div.controlleritem span{
+    background-color: rgb(132,132,132) !important
+}
+
+.colorController div[class~='blackColor']{
+    background: black
+}
+
+.colorController div[class~='redColor']{
+    background: red
+}
+
+.colorController div[class~='blueColor']{
+    background: blue
+}
+
+.textarea{
+    background-color:cyan;
+    box-shadow:0 24px 38px 3px rgba(0,0,0,0.14), 0 9px 46px 8px rgba(0,0,0,0.12), 0 11px 15px -7px rgba(0,0,0,0.2);
+    margin: 10px;
+    overflow: auto;
+    padding: 7px 10px;
+    font-family: tahoma;
+    font-size: 20px;
+    border: none
+}
